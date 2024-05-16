@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML5 Canvas</h1>
+<h2>The textBaseline Property</h2>
+
+<canvas id="myCanvas" width="1000" height="500" style="border:1px solid grey;"></canvas>
+
+<script>
+const c = document.getElementById("myCanvas");
+const ctx = c.getContext("2d");
+
+// Assume some default settings for demonstration
+const options = {
+    dontUseFakeFontInCanvas: false
+};
+
+// Use options to decide which font to use
+if (options.dontUseFakeFontInCanvas) {
+    ctx.font = "11pt Arial";
+} else {
+    ctx.font = "11pt no-real-font-123";
+}
+
+// Set fill style before drawing the text
+ctx.fillStyle = "#069";  // Dark blue color for visibility
+ctx.fillText("Cwm fjordbank glyphs vext quiz, 😃", 2, 15);
+
+ctx.fillStyle = "rgba(102, 204, 0, 0.8)"; // Higher opacity for visibility
+ctx.font = "18pt Arial";
+ctx.fillText("Cwm fjordbank glyphs vext quiz, 😃", 4, 45);
+</script>
+
+</body>
+</html>
