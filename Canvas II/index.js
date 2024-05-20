@@ -74,11 +74,13 @@ onload = async (event) => {
 
     const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(dataURL));
 
-    const hashArray = new Uint8Array(hashBuffer.slice(0, 4)); 
-    var hash = 0;
-    for (var i = 0; i < hashArray.length; i++) {
-        hash = (hash << 8) | hashArray[i];
-    }
-        document.getElementById('withCanvasDrawing').innerHTML = hash;
+    // Take the first 16 bytes of the hash
+    const hashArray = new Uint8Array(hashBuffer.slice(0, 16)); 
+
+    // Convert bytes to hex string
+    const hashHex = Array.from(hashArray).map(b => b.toString(16).padStart(2, '0')).join('');
+
+    // Display the hash
+    document.getElementById('withCanvasDrawing').innerHTML = hashHex;
 
     };
