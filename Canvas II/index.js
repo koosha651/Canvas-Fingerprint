@@ -1,7 +1,8 @@
 addEventListener("load", (event) => { });
 
 onload = async (event) => {
-
+    
+    console.log('toBlob proxy applied 1');
     var canvas = document.createElement("canvas");
     canvas.width = 2000;
     canvas.height = 2000;
@@ -69,8 +70,16 @@ onload = async (event) => {
     // ctx.fill("evenodd");
   
 
+
     document.body.appendChild(canvas);
+
+    console.log('toBlob proxy applied 2');
+
     var dataURL = canvas.toDataURL();
+
+    console.log('toBlob proxy applied 3');
+
+  
 
     const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(dataURL));
 
