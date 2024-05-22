@@ -41,14 +41,19 @@ onload = async (event) => {
     ctx.fill();
     ctx.fillStyle = "rgb(255,0,255)";
 
+    ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+    ctx.fillRect(0, 0, canvas.height, canvas.width);
+  
+
     document.body.appendChild(canvas);
-    console.log('Canvas added to body:', canvas);
-
+////////////////////////////////////////////////////////////////////////////
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    console.log('Generated image data:', imageData);
-
-    // Convert image data to a buffer for hashing
-    const buffer = new Uint8Array(imageData.data.buffer);
+    var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
+    
+   
+    // Calculate the difference
+    var diff = { r: 150 - refPixel.r, g: 150 - refPixel.g, b: 150 - refPixel.b };
+    console.log(diff);  // using it for debugging 
 
     const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
     // Take the first 16 bytes of the hash
