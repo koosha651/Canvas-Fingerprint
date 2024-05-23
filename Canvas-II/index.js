@@ -14,7 +14,8 @@ onload = async (event) => {
     // Colored Rectangles
     ctx.textBaseline = "alphabetic";
     ctx.fillStyle = "#f60";
-    ctx.fillRect(425, 1, 62, 20);
+    // ctx.fillRect(425, 1, 62, 20);
+    ctx.fillRect(0, 0, 1, 1);
     ctx.fillStyle = "#069";
 
     // ctx.font = "11pt Arial";

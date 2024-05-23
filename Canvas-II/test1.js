@@ -46,7 +46,7 @@ onload = async (event) => {
   
 
     document.body.appendChild(canvas);
-////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
     
@@ -54,6 +54,8 @@ onload = async (event) => {
     // Calculate the difference
     var diff = { r: 150 - refPixel.r, g: 150 - refPixel.g, b: 150 - refPixel.b };
     console.log(diff);  // using it for debugging 
+
+    const buffer = new Uint8Array(imageData.data.buffer);
 
     const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
     // Take the first 16 bytes of the hash
