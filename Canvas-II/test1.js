@@ -24,22 +24,22 @@ onload = async (event) => {
     ctx.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 4, 45);
 
 
-    ctx.fillStyle = "rgb(255,0,255)";
-    ctx.beginPath();
-    ctx.arc(50, 350, 50, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-    ctx.fillStyle = "rgb(0,255,255)";
-    ctx.beginPath();
-    ctx.arc(160, 350, 50, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-    ctx.fillStyle = "rgb(255,255,0)";
-    ctx.beginPath();
-    ctx.arc(275, 350, 50, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-    ctx.fillStyle = "rgb(255,0,255)";
+    // ctx.fillStyle = "rgb(255,0,255)";
+    // ctx.beginPath();
+    // ctx.arc(50, 350, 50, 0, Math.PI * 2, true);
+    // ctx.closePath();
+    // ctx.fill();
+    // ctx.fillStyle = "rgb(0,255,255)";
+    // ctx.beginPath();
+    // ctx.arc(160, 350, 50, 0, Math.PI * 2, true);
+    // ctx.closePath();
+    // ctx.fill();
+    // ctx.fillStyle = "rgb(255,255,0)";
+    // ctx.beginPath();
+    // ctx.arc(275, 350, 50, 0, Math.PI * 2, true);
+    // ctx.closePath();
+    // ctx.fill();
+    // ctx.fillStyle = "rgb(255,0,255)";
 
     ctx.fillStyle = 'rgba(150, 150, 150, 1)';
     // ctx.fillRect(0, 0, canvas.height, canvas.width);
