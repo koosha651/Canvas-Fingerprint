@@ -41,19 +41,29 @@ onload = async (event) => {
     ctx.fill();
     ctx.fillStyle = "rgb(255,0,255)";
 
-    // ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+    ctx.fillStyle = 'rgba(150, 150, 150, 1)';
     // ctx.fillRect(0, 0, canvas.height, canvas.width);
-  
+    ctx.fillRect(0, 0, 10,10);
+   
 
     document.body.appendChild(canvas);
 // ////////////////////////////////////////////////////////////////////////////
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
     
-   
     // Calculate the difference
     var diff = { r: 150 - refPixel.r, g: 150 - refPixel.g, b: 150 - refPixel.b };
     console.log(diff);  // using it for debugging 
+
+    values=""
+
+    for (let i = 0; i < imageData.data.length; i += 4) {  
+        values += (imageData.data[i] + diff.r);
+        values += (imageData.data[i + 1] + diff.g);
+        values += (imageData.data[i + 2] + diff.b);
+      }
+
+      console.log(values);
 
     const buffer = new Uint8Array(imageData.data.buffer);
 
