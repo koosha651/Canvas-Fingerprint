@@ -8,20 +8,18 @@ onload = async (event) => {
     var ctx = canvas.getContext("2d");
 
     // Drawing operations
-    ctx.textBaseline = "alphabetic";
-    ctx.fillStyle = "#f60";
-    // ctx.fillRect(425, 1, 62, 20);
+   
+    ctx.fillStyle = 'rgba(150, 150, 150, 1)';
     ctx.fillRect(0, 0, 1, 1);
-    ctx.fillStyle = "#069";
+   
 
+    ctx.textBaseline = "alphabetic";  // affects lines : 18, 22
+    ctx.font = "11pt no-real-font-123"; // affects lines : 18 
+    ctx.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 2, 35);
 
-    ctx.font = "11pt no-real-font-123";
-
-
-    ctx.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 2, 15);
     ctx.fillStyle = "rgba(102, 204, 0, 0.2)";
     ctx.font = "18pt Arial";
-    ctx.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 4, 45);
+    ctx.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 4, 75);
 
 
     // ctx.fillStyle = "rgb(255,0,255)";
@@ -41,9 +39,9 @@ onload = async (event) => {
     // ctx.fill();
     // ctx.fillStyle = "rgb(255,0,255)";
 
-    ctx.fillStyle = 'rgba(150, 150, 150, 1)';
-    // ctx.fillRect(0, 0, canvas.height, canvas.width);
-    ctx.fillRect(0, 0, 10,10);
+    // ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+    // // ctx.fillRect(0, 0, canvas.height, canvas.width);
+    // ctx.fillRect(0, 0, 10,10);
    
 
     document.body.appendChild(canvas);
