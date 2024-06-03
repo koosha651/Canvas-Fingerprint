@@ -8,19 +8,6 @@ onload = async (event) => {
     var ctx = canvas.getContext("2d");
     canvas.width = 500;
     canvas.height = 500;
-    
-
-    // Ensure the port element exists and set its attributes
-    let port = document.getElementById('cc-blck-fp');
-    if (!port) {
-        port = document.createElement('div');
-        port.id = 'cc-blck-fp';
-        document.documentElement.appendChild(port);
-    }
-    port.dataset.mode = 'random'; // Set data-mode to 'random' or 'session'
-    port.dataset.enabled = 'true'; // Enable noise manipulation
-
-    console.log('Port setup:', port.dataset.mode, port.dataset.enabled);
 
     // Drawing operations
    
