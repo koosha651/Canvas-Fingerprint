@@ -46,6 +46,7 @@ To get the website up and running, simply open the file named `Reverser.html`.
 | -------- | -------- | -------- |
 | Row 1    | Data     | Data     |
 | Row 2    | Data     | Data     |
+| Row 3    | Data     | Data     |
 
 
 
