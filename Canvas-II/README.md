@@ -73,10 +73,10 @@ To get the website up and running, simply open the file named `Reverser.html`.
 - [x] Completed task
 - [ ] Incomplete task
 
-`Code Syntax Highlighting:`
+<!-- `Code Syntax Highlighting:`
 ```python
 def foo():
-    return "bar"
+    return "bar" -->
 
 # `Escaping Markdown Characters:`
 # \*Escaped asterisks\*
