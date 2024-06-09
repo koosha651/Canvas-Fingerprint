@@ -1,7 +1,6 @@
-to run the website:
+# Running the Website
 
-only you need run the index.html
+To get the website up and running, simply open the file named `Reverser.html`.
 
-in the index.htm I appended two javascript code the first one is the test1.js and second one is the index.js
-
-for this project you need to run test1.js in the index.html
+## About `Reverser.html`
+`Reverser.html` includes a comprehensive description on how to implement the canvas element. It integrates with the extension code in `main.js` to reverse any noise that has been applied.
