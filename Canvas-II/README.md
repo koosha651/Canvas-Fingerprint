@@ -54,6 +54,17 @@ To get the website up and running, simply open the file named `Reverser.html`.
 > This is a blockquote.
 
 
+
+
+`Mentioning Users and Teams:`
+@username  @team
+
+---
+
+`Emoji`
+:smile: :heart: :+1:
+
+
 ---
 
 `Strikethrough`
@@ -70,11 +81,6 @@ def foo():
 # `Escaping Markdown Characters:`
 # \*Escaped asterisks\*
 
-`Mentioning Users and Teams:`
-@username  @team
-
-`Emoji`
-:smile: :heart: :+1:
 
 
 
