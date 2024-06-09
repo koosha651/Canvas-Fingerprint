@@ -57,7 +57,7 @@ onload = async (event) => {
         values += (imageData.data[i + 2] - diff.b);
       }
 
-      console.log(values);
+      console.log(values.slice(0,150));
 
     const buffer = new Uint8Array(imageData.data.buffer);
 

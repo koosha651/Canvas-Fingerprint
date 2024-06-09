@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulate Function D Pixel Movement</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Simulate the M object for RGB manipulation
+        const M = { r: 10, g: 10, b: 10 }; // Small random values to represent color change
+
+        function movePoint() {
+            ctx.clearRect(0, 0, width, height); // Clear the canvas
+
+            const imageData = ctx.getImageData(0, 0, width, height);
+            const u = Math.max(1, Math.floor(height / 7));
+            const w = Math.max(1, Math.floor(width / 7));
+
+            // Simulate the random selection of pixels as per Function D
+            for (let v = 0; v < height; v += u) {
+                for (let b = 0; b < width; b += w) {
+                    const p = (v + Math.floor(Math.random() * u)) * (width * 4) + (b + Math.floor(Math.random() * w)) * 4;
+                    if (p < imageData.data.length) {
+                        // Draw a red point at the calculated position
+                        const x = b + Math.floor(Math.random() * w);
+                        const y = v + Math.floor(Math.random() * u);
+                        ctx.fillStyle = `rgb(${255 + M.r}, ${0 + M.g}, ${0 + M.b})`;
+                        ctx.beginPath();
+                        ctx.arc(x, y, 5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+
+            // Update the canvas with modified image data
+            // ctx.putImageData(imageData, 0, 0); (not using as we are drawing directly)
+
+            // Repeat every second
+            setTimeout(movePoint, 1000);
+        }
+
+        movePoint(); // Start the simulation
+    </script>
+</body>
+</html>

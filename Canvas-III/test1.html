@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF8">
+    <title>Canvas to SHA-256 Hash</title>
+    <!-- Load CryptoJS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+    <p>SHA-256 Hash of Canvas: <span id="hashOutput"></span></p>
+
+    <script>
+        // Get the canvas element and its 2D context
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw a rectangle with a specific RGBA color
+        ctx.fillStyle = 'rgba(255, 165, 0, 1)'; // Orange color
+        ctx.fillRect(50, 20, 100, 60);
+
+        // Convert the canvas content to a data URL
+        const dataURL = canvas.toDataURL();
+
+        // Convert the Data URL into a format suitable for hashing
+        const base64Data = dataURL.split(',')[1]; // Split to remove the data URL header
+        const words = CryptoJS.enc.Base64.parse(base64Data); // Convert Base64 to word array
+
+        // Compute the SHA-256 hash and convert it to a hex string
+        const hash = CryptoJS.SHA256(words).toString(CryptoJS.enc.Hex);
+
+        // Display the hash
+        document.getElementById('hashOutput').innerText = hash;
+    </script>
+</body>
+</html>
