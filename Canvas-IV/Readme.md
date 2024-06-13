@@ -23,14 +23,14 @@ In the "modifiedCanvasAPI.js" the "randomSupply.getPixelRng" function is where t
 
 | modifiedCanvasAPI.js      |                       | randomSupplies.js        |
 |---------------------------|-----------------------|--------------------------|
-| **Intercepts Canvas**     |                       | **Provides RNGs**        |
-| methods                   |                       |                          |
-| **Adds noise to canvas**  | ---- requests --->    | **Manages random**       |
-| data                      |                       | number generation        |
-| **Uses RNGs to modify**   | <--- supplies ---     | **Supplies random**      |
-| pixel data                |                       | values for noise         |
-|                           |                       | **Ensures consistency**  |
-|                           |                       | for persistent RNGs      |
+| **Intercepts Canvas methods**     |                       | **Provides RNGs**        |
+|                    |                       |                          |
+| **Adds noise to canvas data**  | ---- requests --->    | **Manages randomnumber generation**       |
+|                       |                       |        |
+| **Uses RNGs to modifypixel data**   | <--- supplies ---     | **Supplies randomvalues for noise**      |
+|                |                       |       |
+|                           |                       | **Ensures consistency for persistent RNGs**  |
+|                           |                       |       |
 
 
 
