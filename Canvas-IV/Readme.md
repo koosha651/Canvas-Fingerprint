@@ -53,4 +53,37 @@ getMaxColors(n) {
     return colors;
 }
 ```
-### Key Points:
+## Analyzing "randomSupply.getPixelRng" Function:
+
+```javascript
+function randomMixImageData(window, imageData1, imageData2){
+		const data1 = imageData1.data;     // it assigned data1 to first pixel which containing the pixel data (R, G, B, A values)
+		const data2 = imageData2.data;      // same thing with next pixel data
+		const l = data1.length;		//Check if the length of the pixel data are same
+		if (l === data2.length){
+			const rng = randomSupply.getPixelRng(l, window, {});
+			
+			for (let i = 0; i < l; i += 4){		// Calculating Sign: calculate the pixel value for each pixel color and choosing the sign if it is -1 or 1
+				const signR = data1[i + 0] > data2[i + 0]? -1: 1;	
+				const signG = data1[i + 1] > data2[i + 1]? -1: 1;
+				const signB = data1[i + 2] > data2[i + 2]? -1: 1;
+				const signA = data1[i + 3] > data2[i + 3]? -1: 1;
+				
+				const [deltaR, deltaG, deltaB, deltaA] = rng(
+					signR * (data2[i + 0] - data1[i + 0]),				// find the Random Delta Values for the Red 
+					signG * (data2[i + 1] - data1[i + 1]),
+					signB * (data2[i + 2] - data1[i + 2]),
+					signA * (data2[i + 3] - data1[i + 3]),
+					i / 4
+				);
+				data2[i + 0] = data1[i + 0] + signR * deltaR;
+				data2[i + 1] = data1[i + 1] + signG * deltaG;
+				data2[i + 2] = data1[i + 2] + signB * deltaB;
+				data2[i + 3] = data1[i + 3] + signA * deltaA;
+			}
+		}
+		return imageData2;
+	}
+```
+
+The `randomSupply.getPixelRng` function is where the noise is generated and applied to each pixel
