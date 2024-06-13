@@ -21,15 +21,15 @@ In the "modifiedCanvasAPI.js" the "randomSupply.getPixelRng" function is where t
 
 ### Project Description
 
-| modifiedCanvasAPI.js      |                       | randomSupplies.js        |
+| **modifiedCanvasAPI.js **     |                       | **randomSupplies.js  **      |
 |---------------------------|-----------------------|--------------------------|
-| **Intercepts Canvas methods**     |                       | **Provides RNGs**        |
+| Intercepts Canvas methods     |                       | Provides RNGs        |
 |                    |                       |                          |
-| **Adds noise to canvas data**  | ---- requests --->    | **Manages randomnumber generation**       |
+| Adds noise to canvas data  | ---- **requests** --->    | Manages randomnumber generation       |
 |                       |                       |        |
-| **Uses RNGs to modifypixel data**   | <--- supplies ---     | **Supplies randomvalues for noise**      |
+| Uses RNGs to modifypixel data   | <--- ***supplies*** ---     | Supplies randomvalues for noise      |
 |                |                       |       |
-|                           |                       | **Ensures consistency for persistent RNGs**  |
+|                           |                       | Ensures consistency for persistent RNGs  |
 |                           |                       |       |
 
 
