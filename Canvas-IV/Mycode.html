@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF8">
+<title>Canvas project</title>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+<p>Fingerprint ID: <span id="hashOutput"></span></p>
+
+<script>
+// Get the canvas element and its context
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+
+ctx.fillStyle = 'rgba(50, 50, 50, 1)';
+// ctx.fillStyle = 'rgba(253, 0, 0, 0.6)';
+ctx.fillRect(0, 0, canvas.height, canvas.width);
+
+
+// Using getImageData to access the raw pixel data
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
+var refPixel2 = { r: imageData.data[3], g: imageData.data[4], b: imageData.data[5] };  
+var refPixel3 = { r: imageData.data[6], g: imageData.data[7], b: imageData.data[8] };  
+var refPixel4 = { r: imageData.data[9], g: imageData.data[10], b: imageData.data[11] };  
+var refPixel5 = { r: imageData.data[12], g: imageData.data[13], b: imageData.data[14] };  
+var refPixel6 = { r: imageData.data[15], g: imageData.data[16], b: imageData.data[17] };  
+
+
+
+console.log("reference pixel RGB value 1",refPixel);
+console.log("reference pixel RGB value 2",refPixel2);
+console.log("reference pixel RGB value 3",refPixel3);
+console.log("reference pixel RGB value 4",refPixel4);
+console.log("reference pixel RGB value 5",refPixel5);
+console.log("reference pixel RGB value 6",refPixel6);
+
+
+var diff = { r: refPixel.r - 50, g:refPixel.g - 50, b: refPixel.b - 50 };
+console.log("amount of difference 1",diff);
+
+var diff2 = { r: refPixel2.r - 50, g:refPixel2.g - 50, b: refPixel2.b - 50 };
+console.log("amount of difference 2",diff2);
+
+var diff3 = { r: refPixel3.r - 50, g:refPixel3.g - 50, b: refPixel3.b - 50 };
+console.log("amount of difference 3",diff3);
+
+var diff4 = { r: refPixel4.r - 50, g:refPixel4.g - 50, b: refPixel4.b - 50 };
+console.log("amount of difference 4",diff4);
+
+var diff5 = { r: refPixel5.r - 50, g:refPixel5.g - 50, b: refPixel5.b - 50 };
+console.log("amount of difference 5",diff5);
+
+var diff6 = { r: refPixel6.r - 50, g:refPixel6.g - 50, b: refPixel6.b - 50 };
+console.log("amount of difference 6",diff6);
+
+
+
+
+
+values=""
+    
+  // Apply the inverse difference to RGB pixels
+  for (let i = 0; i < imageData.data.length; i += 4) {  
+    values += (imageData.data[i] + 0);
+    values += (imageData.data[i + 1] + 0);
+    values += (imageData.data[i + 2] + 0);
+  }
+
+// Put the reversed image data back to the canvas
+// ctx.putImageData(imageData, 0, 0);
+
+// Log the pixel values for verification
+console.log(values);
+
+const buffer = imageData.data.buffer;
+
+async function computeSHA256Hash(buffer) {
+    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = new Uint8Array(hashBuffer);
+    const hashHex = Array.from(hashArray).map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+computeSHA256Hash(buffer).then(hashHex => {
+    document.getElementById('hashOutput').innerText = hashHex;
+});
+
+</script>
+</body>
+</html>
