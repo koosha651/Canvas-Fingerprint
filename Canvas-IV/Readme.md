@@ -36,3 +36,6 @@ In the "modifiedCanvasAPI.js" the "randomSupply.getPixelRng" function is where t
 
 ## Random Noise Application
 In the `modifiedCanvasAPI.js`, the `randomSupply.getPixelRng` function is a critical component where the noise is generated and applied to each pixel. During the interception process, `modifiedCanvasAPI.js` requests random values from `randomSupplies.js` to ensure each pixel data is uniquely modified, maintaining the consistency required for persistent RNGs.
+
+
+This&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;spaced&nbsp;&nbsp;&nbsp;&nbsp;text.
