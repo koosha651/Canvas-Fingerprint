@@ -18,14 +18,14 @@ const ctx = canvas.getContext('2d');
 // ctx.fillStyle = 'rgba(150, 150, 150, 1)'; 
 // ctx.fillRect(0, 0, 1, 1);
 
-// ctx.fillStyle = 'rgba(150, 150, 150, 1)';
-// ctx.fillRect(0, 0, canvas.height, canvas.width);
+ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+ctx.fillRect(0, 0, canvas.height, canvas.width);
 
 // ctx.fillStyle = 'rgba(255, 165, 0, 1)'; // Orange color
 // ctx.fillRect(50, 30, 100, 60);
 
-ctx.fillStyle = 'rgba(78, 15, 50, 1)';
-ctx.fillRect(125, 1, 62, 20);
+// ctx.fillStyle = 'rgba(78, 15, 50, 1)';
+// ctx.fillRect(125, 1, 62, 20);
 
 // ctx.fillStyle = 'rgba(10, 220, 50, 1)';
 // ctx.fillRect(50, 150, 62, 20);
@@ -36,31 +36,56 @@ ctx.fillRect(125, 1, 62, 20);
 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
 var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
-console.log("reference pixel RGB value",refPixel);
+var refPixel2 = { r: imageData.data[3], g: imageData.data[4], b: imageData.data[5] };  
+var refPixel3 = { r: imageData.data[6], g: imageData.data[7], b: imageData.data[8] };  
+var refPixel4 = { r: imageData.data[9], g: imageData.data[10], b: imageData.data[11] };  
+var refPixel5 = { r: imageData.data[12], g: imageData.data[13], b: imageData.data[14] };  
+var refPixel6 = { r: imageData.data[15], g: imageData.data[16], b: imageData.data[17] };  
+
+
+
+console.log("reference pixel RGB value 1",refPixel);
+console.log("reference pixel RGB value 2",refPixel2);
+console.log("reference pixel RGB value 3",refPixel3);
+console.log("reference pixel RGB value 4",refPixel4);
+console.log("reference pixel RGB value 5",refPixel5);
+console.log("reference pixel RGB value 6",refPixel6);
+
 
 var diff = { r: refPixel.r - 150, g:refPixel.g - 150, b: refPixel.b - 150 };
-console.log("amount of difference",diff);
+console.log("amount of difference 1",diff);
+
+var diff2 = { r: refPixel2.r - 150, g:refPixel2.g - 150, b: refPixel2.b - 150 };
+console.log("amount of difference 2",diff2);
+
+var diff3 = { r: refPixel3.r - 150, g:refPixel3.g - 150, b: refPixel3.b - 150 };
+console.log("amount of difference 3",diff3);
+
+var diff4 = { r: refPixel4.r - 150, g:refPixel4.g - 150, b: refPixel4.b - 150 };
+console.log("amount of difference 4",diff4);
+
+var diff5 = { r: refPixel5.r - 150, g:refPixel5.g - 150, b: refPixel5.b - 150 };
+console.log("amount of difference 5",diff5);
+
+var diff6 = { r: refPixel6.r - 150, g:refPixel6.g - 150, b: refPixel6.b - 150 };
+console.log("amount of difference 6",diff6);
+
+
+
+
 
 values=""
     
-// Calculate step sizes based on canvas dimensions
-var stepSizeHeight = Math.max(1, parseInt(canvas.height / 10));
-var stepSizeWidth = Math.max(1, parseInt(canvas.width / 10));
+  // Apply the inverse difference to RGB pixels
+  for (let i = 0; i < imageData.data.length; i += 4) {  
+    values += (imageData.data[i] + 0);
+    values += (imageData.data[i + 1] + 0);
+    values += (imageData.data[i + 2] + 0);
+  }
 
-// Loop through the pixels with the step size
-for (let i = 0; i < canvas.height; i += stepSizeHeight) {
-    for (let j = 0; j < canvas.width; j += stepSizeWidth) {
-        const n = ((i * (canvas.width * 4)) + (j * 4));
-        imageData.data[n] = imageData.data[n] - diff.r;        // Reverse R
-        imageData.data[n + 1] = imageData.data[n + 1] - diff.g;  // Reverse G
-        imageData.data[n + 2] = imageData.data[n + 2] - diff.b;  // Reverse B
-
-        values += (imageData.data[n]) + "," + (imageData.data[n + 1]) + "," + (imageData.data[n + 2]) + ",";
-    }
-}
 
 // Put the reversed image data back to the canvas
-ctx.putImageData(imageData, 0, 0);
+// ctx.putImageData(imageData, 0, 0);
 
 // Log the pixel values for verification
 console.log(values);
