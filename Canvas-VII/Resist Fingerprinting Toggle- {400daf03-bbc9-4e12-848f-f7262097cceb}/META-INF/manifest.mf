@@ -1,0 +1,62 @@
+Manifest-Version: 1.0
+
+Name: background.html
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: 61xPJm++iUxqJKKkzVnpTI8BGHo=
+SHA256-Digest: QFF6Dh1fPDv1JDYGOm6AxmqQmcLBDozpSkfD4pBtc7U=
+
+Name: background.js
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: 5/G7XnTU/sc9CSf8H27FcEOM3oI=
+SHA256-Digest: JsWQ+N1sL/p5G/PTNLp8HCcunu0Or5eoUO6v187BO7o=
+
+Name: constants.js
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: vIF9ZGEDHu6tH/QgSI7+Pvv2l6k=
+SHA256-Digest: 7Gehc0bCS980yOy9B3UGBprRcqA1TdDQrJsg3j9nIVI=
+
+Name: manifest.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: OKNgcJ/TNZCUQ5xNRCRz1of/Grg=
+SHA256-Digest: UjToZttHpXnYAcGlDyaBI3m4S9rXN+oKZDd9IbxA7DI=
+
+Name: icons/rfp-default.svg
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: EIjlJ8f6rBEQuOs6hGdo2a041qQ=
+SHA256-Digest: hPj2zxJgNVCQUhHnp0UtqI50cLS+53XutS8f2SdTl5o=
+
+Name: icons/rfp-disabled.svg
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: g9aa+kPBa+C5XEN/upYl0hW1QQI=
+SHA256-Digest: ND+Jmyp0q2dxVxrg6RZyusxJUL+pl7t+G/KpcczgNB4=
+
+Name: icons/rfp-enabled.svg
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: HIiVBTcZmjlrI1ISqi+A8TgpwxA=
+SHA256-Digest: nzTnkIF9+VJA/f0YTIBHYabTLcOtfMFYT6lc9qqo1XQ=
+
+Name: _locales/de/messages.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: ChefgBqvWoY54ifW+gLtxAkfTv8=
+SHA256-Digest: FHQutPI8Iqo3WK9Un6GCaOtQEPk5eviF6QXumh1o9tY=
+
+Name: _locales/dk/messages.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: frmqMnEkOB6OpaqKab5GPm6A0O8=
+SHA256-Digest: v/ndKb6AiYJlSdACIYQ4M8wX2+IxgMX8nP8Dq5ZHJSc=
+
+Name: _locales/en/messages.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: /eHe015PPx9TXY0pRR7r7j2cCMI=
+SHA256-Digest: cW4Xl8GzMrBeb3U4uP2Ec2OCYmwZQ0QRTsSf5AkGyLc=
+
+Name: META-INF/cose.manifest
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: L19dalon3vXrnYg4brWh+nViC0E=
+SHA256-Digest: ecdtjrw2gCu5fDrt5XEskuUOHh1nPRhynKPKQVjBg5A=
+
+Name: META-INF/cose.sig
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: OM7WSf7Iz8gyQKXCKRZoIl9KEQ0=
+SHA256-Digest: YGkMevff8ctO63wthrAYnOn2uem9pM/ldsJzvcMA3IY=
+
