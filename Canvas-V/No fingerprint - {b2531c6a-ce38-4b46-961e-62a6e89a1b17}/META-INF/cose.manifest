@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+
+Name: No Fingerprint.png
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: nW4AbjAuczpsHO8xfRnHIw68xqc=
+SHA256-Digest: jnVlylwRmFcjiwEyL3VCPNfgMWzjbFmZ4zyEZCORi/E=
+
+Name: LICENSE
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: bYQgmVMNEm3qN9uFinVeRE9N4/c=
+SHA256-Digest: awOCsWJ58m/2kBQwBUGWejVqZm6wuRtCL2hi9rfa0X4=
+
+Name: No Fingerprint.svg
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: lyhUGD88UpPQGrRJhyz6g4olteQ=
+SHA256-Digest: 7LnliaqLAYzCeCYcFs+OWpkPFTGYL1GmH+Nv46oTn/4=
+
+Name: No Fingerprint small.svg
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: BAKOt+f5rH/v6ckQ/4M8Cr2UbcE=
+SHA256-Digest: YV5m+PIoKp3XVjpOupCDb3Dpzei1FgXFSrWRhLkym+0=
+
+Name: no-fingerprint.user.js
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: aWg6Ft6Nif3YhAFsDXOQtarcRSA=
+SHA256-Digest: lt6WTRXrRZtPBvHf7GzqxhklEHB19YKcmKElPxfJFYc=
+
+Name: README.md
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: RP/+sucSYEUd230REhPl7nrXSdI=
+SHA256-Digest: BvMqppaZqp1kIWBN4163PpY9QjqxHVUg26ZjkT0gTTk=
+
+Name: manifest.json
+Digest-Algorithms: SHA1 SHA256
+SHA1-Digest: 258Ccva6pCduPhE1wIddapFGIQg=
+SHA256-Digest: Bswq4eKJjK+x0BYAvrvbSQ0IwC2SYH3nn4ssJsTtSlo=
+
