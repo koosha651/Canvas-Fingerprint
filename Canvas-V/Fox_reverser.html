@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF8">
+<title>Canvas project</title>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+<p>Fingerprint ID: <span id="hashOutput"></span></p>
+
+<script>
+// Get the canvas element and its context
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// Draw a rectangle with a specific RGBA color
+// ctx.fillStyle = 'rgba(150, 150, 150, 1)'; 
+// ctx.fillRect(0, 0, 1, 1);
+
+// ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+// ctx.fillRect(0, 0, canvas.height, canvas.width);
+
+// ctx.fillStyle = 'rgba(255, 165, 0, 1)'; // Orange color
+// ctx.fillRect(50, 30, 100, 60);
+
+ctx.fillStyle = 'rgba(78, 15, 50, 1)';
+ctx.fillRect(125, 1, 62, 20);
+
+// ctx.fillStyle = 'rgba(10, 220, 50, 1)';
+// ctx.fillRect(50, 150, 62, 20);
+
+
+
+// Using getImageData to access the raw pixel data
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
+console.log("reference pixel RGB value",refPixel);
+
+var diff = { r: refPixel.r - 150, g:refPixel.g - 150, b: refPixel.b - 150 };
+console.log("amount of difference",diff);
+
+values=""
+    
+// Calculate step sizes based on canvas dimensions
+var stepSizeHeight = Math.max(1, parseInt(canvas.height / 10));
+var stepSizeWidth = Math.max(1, parseInt(canvas.width / 10));
+
+// Loop through the pixels with the step size
+for (let i = 0; i < canvas.height; i += stepSizeHeight) {
+    for (let j = 0; j < canvas.width; j += stepSizeWidth) {
+        const n = ((i * (canvas.width * 4)) + (j * 4));
+        imageData.data[n] = imageData.data[n] - diff.r;        // Reverse R
+        imageData.data[n + 1] = imageData.data[n + 1] - diff.g;  // Reverse G
+        imageData.data[n + 2] = imageData.data[n + 2] - diff.b;  // Reverse B
+
+        values += (imageData.data[n]) + "," + (imageData.data[n + 1]) + "," + (imageData.data[n + 2]) + ",";
+    }
+}
+
+// Put the reversed image data back to the canvas
+ctx.putImageData(imageData, 0, 0);
+
+// Log the pixel values for verification
+console.log(values);
+
+const buffer = imageData.data.buffer;
+
+async function computeSHA256Hash(buffer) {
+    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = new Uint8Array(hashBuffer);
+    const hashHex = Array.from(hashArray).map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+computeSHA256Hash(buffer).then(hashHex => {
+    document.getElementById('hashOutput').innerText = hashHex;
+});
+
+</script>
+</body>
+</html>
