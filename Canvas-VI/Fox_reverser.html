@@ -1,76 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF8">
-<title>Canvas project</title>
+<title>Test 2</title>
 </head>
 <body>
-<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
-<p>Fingerprint ID: <span id="hashOutput"></span></p>
+<canvas id="testCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+<p>Hash: <span id="hashValue"></span></p>
 
 <script>
-// Get the canvas element and its context
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
+  window.onload = function() {
+    const canvas = document.getElementById('testCanvas');
+    const ctx = canvas.getContext('2d');
 
-// Draw a rectangle with a specific RGBA color
-// ctx.fillStyle = 'rgba(255, 255, 255, 1)'; 
-// ctx.fillRect(0, 0, 1, 1);
-
-ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-ctx.fillRect(0, 0, canvas.height, canvas.width);
-
-// ctx.fillStyle = 'rgba(255, 165, 0, 1)'; // Orange color
-// ctx.fillRect(50, 30, 100, 60);
-
-// ctx.fillStyle = 'rgba(78, 15, 50, 1)';
-// ctx.fillRect(125, 1, 62, 20);
-
-// ctx.fillStyle = 'rgba(10, 220, 50, 1)';
-// ctx.fillRect(50, 255, 62, 20);
+    // Set the initial color for the entire canvas
+    ctx.fillStyle = 'rgba(150, 150, 150, 1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
+    // Use setTimeout to allow any extension modifications to be applied
+    setTimeout(() => {
+     
+      const dataUrl = canvas.toDataURL('image/png');   // turns the entire canvas into data URL
 
-// Using getImageData to access the raw pixel data
-const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };  
-console.log("reference pixel RGB value",refPixel);
+      // Get the reference pixel data
+      var refPixel = { r: imageData.data[0], g: imageData.data[1], b: imageData.data[2] };
+      console.log("reference pixel RGB value", refPixel);
 
-var diff = { r: refPixel.r - 255, g:refPixel.g - 255, b: refPixel.b - 255 };
-console.log("amount of difference",diff);
+      // Calculate and log the difference (amount of noise)
+      var diff = { r: refPixel.r - 150, g: refPixel.g - 150, b: refPixel.b - 150 };
+      console.log("amount of difference", diff);
 
+      values=""
+        
+      // Apply the inverse difference to RGB pixels
+      for (let i = 0; i < imageData.data.length; i += 4) {  
+        values += (imageData.data[i] - diff.r);
+        values += (imageData.data[i + 1] - diff.g);
+        values += (imageData.data[i + 2] - diff.b);
+      }
 
-    
-values=""
-    
-  // Apply the inverse difference to RGB pixels
-  for (let i = 0; i < imageData.data.length; i += 4) {  
-    values += (imageData.data[i] + 0);
-    values += (imageData.data[i + 1] + 0);
-    values += (imageData.data[i + 2] + 0);
-  }
+      console.log(values);
 
-// Put the reversed image data back to the canvas
-// ctx.putImageData(imageData, 0, 0);
+      // Compute hash of the data URL
+      computeHash(dataUrl).then(hash => {
+        document.getElementById('hashValue').innerText = hash;
+        
+      });
+    }, 10); // Delay to ensure extension has time to modify the canvas
+  };
 
-// Log the pixel values for verification
-console.log(values);
+  
 
-const buffer = imageData.data.buffer;
-
-async function computeSHA256Hash(buffer) {
-    const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
-    const hashArray = new Uint8Array(hashBuffer);
-    const hashHex = Array.from(hashArray).map(b => b.toString(16).padStart(2, '0')).join('');
+  // Function to compute a simple hash of a string (data URL in this case)
+  async function computeHash(data) {
+    const encoder = new TextEncoder();
+    const dataAsUint8Array = encoder.encode(data);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', dataAsUint8Array);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     return hashHex;
-}
-
-computeSHA256Hash(buffer).then(hashHex => {
-    document.getElementById('hashOutput').innerText = hashHex;
-});
-
+  }
 </script>
 </body>
 </html>
